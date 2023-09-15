@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { mainActions } from "./main-slice";
 
 const initialState = {
     items: [],
@@ -43,6 +44,48 @@ const cartSlice = createSlice({
         // }
     },
 });
+
+export const sendCartData = (cartData) => {
+    return async (dispatchAction) => {
+        dispatchAction(mainActions.showStatusMessage({
+            status: "error",
+            title: 'Request failed',
+            message: 'Error sending cart data',
+          })
+        );
+
+        const sendHttpRequest = async () => {
+            const response = await fetch('https://joke-fcdf0-default-rtdb.europe-west1.firebasedatabase.app/cart.json', {
+                method: 'PUT',
+                body: JSON.stringify(cartData),
+                }
+            );
+
+            if(!response.ok) {
+                throw new Error('Error sending cart data');
+            }
+        };
+
+        try {
+            await sendHttpRequest();
+
+            dispatchAction(
+                mainActions.showStatusMessage({
+                    status: "success",
+                    title: 'Sending data was successful',
+                    message: 'Cart data sent to the server',
+                })
+            );
+        } catch (error) {
+            dispatchAction(mainActions.showStatusMessage({
+                status: "error",
+                title: 'Request failed',
+                message: 'Error sending cart data',
+              }));
+        }
+
+    };
+};
 
 export const cartActions = cartSlice.actions;
 export default cartSlice;
