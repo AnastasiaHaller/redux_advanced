@@ -1,4 +1,4 @@
-<b>Online Store:</b> A simple online store app developed as a learning project while following the 'From Zero to Professional' course on Udemy. 
+<b>Online Store:</b> A simple online store app developed as a learning project while following the 'From Zero to Professional' course on Udemy. Focusing on learning Redux.
 
 <b>Technologies Used:</b>
 
