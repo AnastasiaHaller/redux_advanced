@@ -3,13 +3,11 @@ import { mainActions } from "../../store/main-slice";
 import { useDispatch, useSelector } from "react-redux";
 
 const CartButton = (props) => {
-
   const dispatchAction = useDispatch();
-
-  const itemsQuantity = useSelector((state) => state.cart.itemsQuantity)
+  const itemsQuantity = useSelector((state) => state.cart.itemsQuantity);
 
   const cartVisibilityHandler = () => {
-    dispatchAction(mainActions.toggleCarVisibility());
+    dispatchAction(mainActions.toggleCartVisibility());
   };
 
   return (
