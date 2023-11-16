@@ -60,7 +60,7 @@ export const sendCartData = (cartData) => {
 
     const sendDataHttpRequest = async () => {
       const response = await fetch(
-        'https://react-course-http-8220d-default-rtdb.firebaseio.com/cart.json',
+        'https://joke-fcdf0-default-rtdb.europe-west1.firebasedatabase.app/cart.json',
         {
           method: 'PUT',
           body: JSON.stringify({
@@ -103,7 +103,7 @@ export const getCartData = () => {
   return async (dispatchAction) => {
     const getDataHttpRequest = async () => {
       const response = await fetch(
-        'https://react-course-http-8220d-default-rtdb.firebaseio.com/cart.json'
+        'https://joke-fcdf0-default-rtdb.europe-west1.firebasedatabase.app/cart.json'
       );
 
       if (!response.ok) {
